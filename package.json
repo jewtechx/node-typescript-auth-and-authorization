@@ -1,0 +1,36 @@
+{
+  "name": "node-typescript-auth-and-authorization",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": "https://github.com/jewtechx/node-typescript-auth-and-authorization",
+  "author": "CodeSageJ <132118735+jewtechx@users.noreply.github.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/config": "^3.3.3",
+    "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.5",
+    "@types/lodash": "^4.14.202",
+    "@types/nodemailer": "^6.4.14",
+    "pino-pretty": "^10.2.3",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@typegoose/typegoose": "^12.0.0",
+    "argon2": "^0.31.2",
+    "config": "^3.3.9",
+    "dayjs": "^1.11.10",
+    "dotenv": "^16.3.1",
+    "express": "^5.0.0-alpha.8",
+    "jsonwebtoken": "^9.0.2",
+    "lodash": "^4.17.21",
+    "mongoose": "^8.0.3",
+    "nanoid": "^5.0.4",
+    "nodemailer": "^6.9.7",
+    "pino": "^8.16.2",
+    "zod": "^3.22.4"
+  },
+  "scripts":{
+    "dev":"ts-node-dev --respawn --transpile-only src/app.ts"
+  }
+}
