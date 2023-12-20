@@ -28,9 +28,10 @@
     "nanoid": "^5.0.4",
     "nodemailer": "^6.9.7",
     "pino": "^8.16.2",
+    "uuid": "^9.0.1",
     "zod": "^3.22.4"
   },
-  "scripts":{
-    "dev":"ts-node-dev --respawn --transpile-only src/app.ts"
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/app.ts"
   }
 }

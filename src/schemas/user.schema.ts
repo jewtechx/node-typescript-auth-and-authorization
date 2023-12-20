@@ -23,4 +23,21 @@ export const createUserShema = object({
     })
 })
 
+export const verifyUserShema = object({
+    params:object({
+        id:string(),
+        verificationCode:string()
+    })
+})
+
+export const forgotPasswordSchema = object({
+    body:object({
+        email:string({
+            required_error:"Email is required"
+        }).email("Not a valid email")
+    })
+})
+
 export type createUserInput = TypeOf<typeof createUserShema> ["body"]
+export type verifyUserInput = TypeOf<typeof verifyUserShema> ["params"]
+export type forgotPasswordInput = TypeOf<typeof forgotPasswordSchema> ["body"]

@@ -3,9 +3,10 @@ import {
     modelOptions,
     prop,
     Severity,
+    index,
     pre,  DocumentType,
   } from "@typegoose/typegoose";
-  import nanoid from "nanoid";
+  import {v4} from 'uuid';
   import argon2 from "argon2";
   import log from "../utils/logger";
   
@@ -20,6 +21,9 @@ import {
   
     return;
   })
+
+  @index({email : 1})
+
   @modelOptions({
     schemaOptions: {
       timestamps: true,
@@ -41,7 +45,7 @@ import {
     @prop({ required: true })
     password: string;
   
-    @prop({ required: true, default: () => nanoid() })
+    @prop({ required: true, default: () => v4() })
     verificationCode: string;
   
     @prop()

@@ -3,8 +3,8 @@ export default {
     dbUri: "mongodb+srv://jwlarbi15:nodetypescriptauth@cluster0.q47ygwz.mongodb.net/node-typescript-auth",
     level:"info",
     smtp: {
-        user: "icqskc5mxzf3bwct@ethereal.email",
-        pass: "mVSU79SbF3WmvGqy4V",
+        user: "popp2nhzygooh5ob@ethereal.email",
+        pass: "AeuVZ3P1h1tWvSSzg2",
         host: "smtp.ethereal.email",
         port: 587,
         secure: false,
