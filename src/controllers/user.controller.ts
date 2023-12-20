@@ -1,5 +1,5 @@
 import { Request,Response } from "express";
-import { createUserInput,verifyUserInput,forgotPasswordInput } from "../schemas/user.schema";
+import { createUserInput,verifyUserInput,forgotPasswordInput,resetPasswordInput } from "../schemas/user.schema";
 import { createUser,findUserById,findUserByEmail } from "../services/user.service";
 import sendEmail from "../utils/mailer";
 
@@ -26,7 +26,7 @@ export async function createUserHandler(req:Request<{}, {},createUserInput> ,res
     }
 }
 
-export async function verifyUserHandler(req:Request<{}, {}, verifyuserInput> , res:Response){
+export async function verifyUserHandler(req:Request<verifyuserInput> , res:Response){
     const id = req.params.id;
     const verificationCode = req.params.verificationCode;
 
@@ -84,4 +84,23 @@ export async function forgotPasswordHandler(req:Request<forgotPasswordInput>,res
     log.debug(`Password reset code sent to ${user.email}`)
 
     return res.send(message)
+}
+
+export async function resetPasswordHandler(req:Request<resetPasswordInput["params"] , {} , resetPasswordInput["body"]>,res:Response){
+    const {id,passwordResetCode} = req.params;
+    const {password} = req.body;
+
+    const user = await findUserById(id);
+
+    if(!user || !user.passwordResetCode || !user.passwordResetCode !== passwordResetCode){
+        return res.status(400).send("Could not reset password")
+    }
+
+    user.passwordResetCode = null;
+
+    user.password = password;
+
+    await user.save();
+
+    return res.send("Successfully updated password")
 }
