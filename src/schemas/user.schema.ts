@@ -23,7 +23,7 @@ export const createUserShema = object({
     })
 })
 
-export const verifyUserShema = object({
+export const verifyUserSchema = object({
     params:object({
         id:string(),
         verificationCode:string()
@@ -38,7 +38,7 @@ export const forgotPasswordSchema = object({
     })
 })
 
-export const resetPasswordShema = object({
+export const resetPasswordSchema = object({
     params:object({
         id:string(),
         passwordResetCode:string()
@@ -59,6 +59,6 @@ export const resetPasswordShema = object({
 
 
 export type createUserInput = TypeOf<typeof createUserShema> ["body"]
-export type verifyUserInput = TypeOf<typeof verifyUserShema> ["params"]
+export type verifyUserInput = TypeOf<typeof verifyUserSchema> ["params"]
 export type forgotPasswordInput = TypeOf<typeof forgotPasswordSchema> ["body"]
-export type resetPasswordInput = Typeof<typeof resetPasswordSchema>
+export type resetPasswordInput = TypeOf<typeof resetPasswordSchema>

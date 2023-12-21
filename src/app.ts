@@ -4,10 +4,13 @@ import config from "config"
 import connection from "./utils/connection"
 import log from "./utils/logger"
 import router from "./routes"
+import { deserializeuser } from "./middleware/deserializeUser"
 
 const app = express()
 
 app.use(express.json())
+
+app.use(deserializeuser)
 
 app.use(router)
 

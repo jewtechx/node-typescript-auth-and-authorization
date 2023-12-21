@@ -1,4 +1,5 @@
-import {prop,Ref} from "@typegoose/typegoose"
+import {getModelForClass, prop,Ref} from "@typegoose/typegoose"
+import { User } from "./user.model";
 
 export class Session {
     @prop({ref: () => User})
@@ -10,7 +11,7 @@ export class Session {
 
 const SessionModel = getModelForClass(Session, {
     schemaOptions :{
-        timeStamps : true,
+        timestamps : true,
     }
 });
 

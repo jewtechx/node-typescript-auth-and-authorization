@@ -2,6 +2,8 @@ import { Request,Response } from "express";
 import { createUserInput,verifyUserInput,forgotPasswordInput,resetPasswordInput } from "../schemas/user.schema";
 import { createUser,findUserById,findUserByEmail } from "../services/user.service";
 import sendEmail from "../utils/mailer";
+import {v4} from "uuid"
+import log from "../utils/logger";
 
 export async function createUserHandler(req:Request<{}, {},createUserInput> ,res:Response){
 
@@ -26,7 +28,7 @@ export async function createUserHandler(req:Request<{}, {},createUserInput> ,res
     }
 }
 
-export async function verifyUserHandler(req:Request<verifyuserInput> , res:Response){
+export async function verifyUserHandler(req:Request<verifyUserInput> , res:Response){
     const id = req.params.id;
     const verificationCode = req.params.verificationCode;
 
@@ -68,7 +70,7 @@ export async function forgotPasswordHandler(req:Request<forgotPasswordInput>,res
         return res.send("User is not verified");
     }
 
-    const passwordResetCode = uuid.v4()
+    const passwordResetCode = v4()
 
     user.passwordResetCode = passwordResetCode
 
@@ -92,7 +94,7 @@ export async function resetPasswordHandler(req:Request<resetPasswordInput["param
 
     const user = await findUserById(id);
 
-    if(!user || !user.passwordResetCode || !user.passwordResetCode !== passwordResetCode){
+    if(!user || !user.passwordResetCode || user.passwordResetCode !== passwordResetCode){
         return res.status(400).send("Could not reset password")
     }
 
@@ -103,4 +105,8 @@ export async function resetPasswordHandler(req:Request<resetPasswordInput["param
     await user.save();
 
     return res.send("Successfully updated password")
+}
+
+export async function getCurrentUserHandler(req:Request,res:Response){
+    return res.send(res.locals.user)
 }

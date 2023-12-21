@@ -10,6 +10,14 @@ import {
   import argon2 from "argon2";
   import log from "../utils/logger";
   
+  export const privateField = [
+    "password",
+    "__v",
+    "verificationCode",
+    "passwordResetCode",
+    "verified"
+  ]
+
   @pre<User>("save", async function () {
     if (!this.isModified("password")) {
       return;
