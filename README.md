@@ -1,4 +1,6 @@
-# node-typescript-authentication
+# Node-Typescript-Authentication
+Welcome to Node TypeScript Authentication – a robust authentication system built with the power of Node.js and TypeScript. Secure, efficient, and scalable, this project exemplifies the fusion of modern development practices to ensure a seamless and reliable authentication experience. Explore the intersection of Node.js and TypeScript as we prioritize security and code maintainability in crafting this authentication solution. Let's elevate your authentication processes to new heights!
+
 
 ### Features
 1. Register a user
