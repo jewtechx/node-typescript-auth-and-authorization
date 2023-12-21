@@ -24,10 +24,7 @@
  * config - Managing configuration
 
  ### API URL
-
-    ```bash 
-        https://node-ts-auth.onrender.com
-    ```
+```bash https://node-ts-auth.onrender.com```
 
  ### Endpoints
   1. `/api/users` - Creates a new user
